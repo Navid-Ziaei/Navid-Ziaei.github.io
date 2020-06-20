@@ -1,2 +1,0 @@
-# Navid Ziaei 
-Persoal Website
