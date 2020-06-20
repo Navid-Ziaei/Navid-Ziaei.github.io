@@ -1,1 +1,2 @@
-# Navid-Ziaei.github.io
+Navid Ziaei
+Machine Learning Researcher
