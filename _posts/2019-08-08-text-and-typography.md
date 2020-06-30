@@ -1,20 +1,20 @@
 ---
-title: Text and Typography
-author: Cotes Chung
+title: RNN, LSTM and GRU
+author: Navid Ziaei
 date: 2019-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
+categories: [DeepLearning, Machine LEarning]
+tags: [LSTM, Deep Learning]
 math: true
 ---
 
-This Jekyll template totally compatible with Markdown syntax. Now, let's take a look for the text and typography in here.
+You have heared much about recurrent neural network and it's sucssesive derivatives, LSTM and GRU. Here we want to use them for a real example.
 
-## Titles
+## Recurrent Neural Network
 
 ***
-# H1
+# LSTM
 
-<h2 data-toc-skip>H2</h2>
+<h2 Long Short Term memory>H2</h2>
 
 <h3 data-toc-skip>H3</h3>
 
