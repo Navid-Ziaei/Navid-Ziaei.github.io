@@ -1,204 +1,73 @@
 ---
 title: Getting Started
-author: Cotes Chung
-date: 2019-08-09 20:55:00 +0800
-categories: [Blogging, Tutorial]
-tags: [getting started]
+author: Navid Ziaei
+date: 2020-07-01 20:55:00 +0800
+categories: [DeepLearning, Tutorial]
+tags: [Deep Learning, TensorFlow, Machine Learning]
 pin: true
 ---
 
-## Prerequisites
+## Why We Should use Tensorflow2
 
-Follow the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of basic environment (`Ruby`, `RubyGems` and `Bundler`). 
+If you were intrested in Keras or Torch beacuse of it's simplicity to build different model, or if you were a Thiano or Tensorflow specialist who has a strong interest in post-network mathematics, It's time to megerate to Tensorflow 2! a new frame work that has combined keras simplisity with tensorflow 1 abilities.
+Now it's supported by conda and you can easily install it using conda.
 
-To improve the writing experience, we need to use some script tools. If your machine is running Debian or macOS, make sure that [GNU coreutils](https://www.gnu.org/software/coreutils/) is installed. Otherwise, install by:
-
-* Debian
-
-```console
-$ sudo apt-get install coreutils
-```
-
-* macOS
+* Conda Installation cpu
 
 ```console
-$ brew install coreutils
+$ conda create -n tf2 python=3.6 tensorflow
 ```
 
-
-## Jekyll Plugins
-
-[Fork **Chirpy** from GitHub](https://github.com/cotes2020/jekyll-theme-chirpy/fork), then clone your forked repo to local:
-
+* Conda Installation gpu
 ```console
-$ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
+$ conda create -n tf2 python=3.6 tensorflow-gpu
 ```
 
-and replace the `USER` above to your GitHub username.
-
-The first time you run or build the project on local machine, perform the installation of Jekyll plugins. Go to the root of repo and run:
-
-```terminal
-$ bundle install
-```
-
-`bundle` will automatically install all the dependent Jekyll Plugins that listed in the `Gemfile`.
+Don't forget to install CUDA Toolkit V>10 for GPU Version of tensorflow. now you don't need to install Keras as a single package. It's already installed as a bulit-in API.
 
 
-## Directory Structure
 
-The main files and related brief introductions are listed below.
+## What Hase Chanched?
+In simple terms, TensorFlow 2 threw all the crap away and swallowed Keras. We now have all the prototyping goodness within TensorFlow. Then, the eager mode became the default, just like PyTorch. We can even define models as Python classes. Finally, this was all done without compromising TensorFlow’s edge on deployment, nor the speed of compiled code
+# Simple Network Building
+Keras as a built-in API, Enable Tensorflow 2 to create network using predefined layers.
 
-```sh
-jekyll-theme-chirpy/
-├── _data
-├── _includes      
-├── _layouts
-├── _posts          # posts stay here
-├── _scripts
-├── .travis.yml     # remove it
-├── .github         # remove this, too
-├── assets      
-├── tabs
-│   └── about.md    # the ABOUT page
-├── .gitignore
-├── 404.html
-├── Gemfile
-├── LICENSE
-├── README.md
-├── _config.yml     # configuration file
-├── tools           # script tools
-├── feed.xml
-├── index.html
-├── robots.txt
-└── sitemap.xml
-```
+# No more session
+One of the most confusing parts of tensorflow1 was sessions. now sessions has removed from tensorflow.
+
+# What about custom layers?
+I don't want predefined layers! I NEED my own layes!
+No problem. That's OK! you can build every layer you want using Tensorflow power!
+
+# Training
+You can easily fit a model with keras methods and you can also build your loss and create your special training scheme using custum loops and calculating gradient
 
 
-As mentioned above, some files or directories should be removed from your repo:
+## A suggestion to keras users
 
-- .travis.yml
-- .github
-
-
-## Configuration
-
-Generally, go to `_config.yml` and configure the variables as needed. Some of them are typical options:
-
-* `url`
-    
-    Set to your website url and there should be no slash symbol at the tail. Format: `<protocol>://<domain>`.
+If you are a keras user, don't be afraid! nothing will change for you. migerate to tensorflow. keras as a seperate package will not support. migerate and use the power of tensorflow along with keras methods and objects.
 
 
-* `avatar`
-    
-    It defines the image file location of avatar. The sample image is `/assets/img/sample/avatar.jpg`, and should be replaced by your own one (a square image). Notice that a huge image file will increase the load time of your site, so keep your avatar image size as small as possible (may be *<https://tinypng.com/>* will help).
 
-* `timezone`
+## Simple Comparison between Tensorflow 1 and 2
+#Ease of use
+Many old libraries (example tf.contrib) were removed, and some consolidated. For example, in TensorFlow1.x the model could be made using Contrib, layers, Keras or estimators, so many options for the same task confused many new users. TensorFlow 2.0 promotes TensorFlow Keras for model experimentation and Estimators for scaled serving, and the two APIs are very convenient to use.
 
-    To ensure that the posts' release date matches the city you live in, please modify the field `timezone` correctly. A list of all available values can be found on [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) or [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-
-* `theme_mode`
-  
-    There are three options for the theme color scheme:
-    
-    - **dual**  - The default color scheme will follow the system settings, but if the system does not support dark mode, or the browser does not support `Media Queries Level 5`, the theme will be displayed as `light` mode by default. Anyway, the bottom left corner of the Sidebar will provide a button for users to switch color schemes.
-
-    - **dark**  - Always show dark mode.
-    - **light** - Always show light mode.
+#Eager Execution
+In TensorFlow 1.x. The writing of code was divided into two parts: building the computational graph and later creating a session to execute it. this was quite cumbersome, especially if in the big model that you have designed, a small error existed somewhere in the beginning. TensorFlow2.0 Eager Execution is implemented by default, i.e. you no longer need to create a session to run the computational graph,  you can see the result of your code directly without the need of creating Session.
 
 
-##  Run Locally
+#Model Building and deploying made easy
+With TensorFlow2.0 providing high level TensorFlow Keras API, the user has a greater flexibility in creating the model. One can define model using Keras functional or sequential API. The TensorFlow Estimator API allows one to run model on a local host or on a distributed multi-server environment without changing your model. Computational graphs are powerful in terms of performance, in TensorFlow 2.0 you can use the decorator tf.function so that the following function block is run as a single graph. This is done via the powerful Autograph feature of TensorFlow 2.0. This allows users to optimize the function and increase portability. And the best part you can write the function using natural Python syntax. Effectively, you can use the decorator tf.function to turn  plain Python code into graph. While the decorator @tf.function applies to the function block immediately following it, any functions called by it will be executed in graph mode as well. Thus, in TensorFlow 2.0, users should refactor their code into smaller functions which are called as needed. In general, it's not necessary to decorate each of these smaller functions with tf.function; only use tf.function to decorate high-level computations - for example, one step of training, or the forward pass of your model. (source stack overflow and TF2 documentation)
 
-You may want to preview the site content before publishing, so just run the script tool:
+To expand this idea, In TensorFlow 1.x we needed to build the computational graph. TensorFlow 2.0 does not build graph by default. However, as every Machine Learning engineer knows, graphs are good for speed. TensorFlow 2.0 provides the user to create a callable graph using a python function @tf.function. The tf.function() will create a separate graph for every unique set of input shapes and datatypes. In the example below we will have three separate graphs created, one for each input datatype.
 
-```terminal
-$ bash tools/run.sh
-```
+#The Data pipeline simplified
+TensorFlow2.0 has a separate module TensorFlow DataSets that can be used to operate with the model in more elegant way. Not only it has a large range of existing datasets, making your job of experimenting with a new architecture easier - it also has well defined way to add your data to it.
 
-Open a browser and visit <http://localhost:4000>.
+ 
 
-Few days later, you may find that the file changes does not refresh in real time by using `run.sh`. Don't worry, the advanced option `-r` (or `--realtime`) will solve this problem, but it requires [**fswatch**](http://emcrisostomo.github.io/fswatch/) to be installed on your machine.
+In TensorFlow 1.x for building a model we would first need to declare placeholders. These were the dummy variables which will later (in the session) used to feed data to the model. There were many built-in APIs for building the layers like tf.contrib, tf.layers and tf.keras, one could also build layers by defining the actual mathematical operations.
 
-##  Deploying to GitHub Pages
+TensorFlow 2.0 you can build your model defining your own mathematical operations, as before you can use math module (tf.math) and linear algebra (tf.linalg) module. However, you can take advantage of the high level Keras API and tf.layers module. The important part is we do not need to define placeholders any more.
 
-Before the deployment begins, checkout the file `_config.yml` and make sure that the `url` has been configured. What's more, if you prefer the [Project site on GitHub](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and also use the default domain `<username>.github.io`, remember to change the `baseurl` to your project name that starting with a slash. For example, `/project`.
-
-
-### Option 1: Built by GitHub Pages
-
-By deploying the site in this way, you're allowed to push the source code directly to the remote.
-
-> **Note**: If you want to use any third-party Jekyll plugins that not in [this list](https://pages.github.com/versions/), stop reading the current approach and go to [*Option 2: Build locally*](#option-2-build-locally).
-
-**1**. Rename the repository to:
-
-|Site Type | Repo's Name|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| Any one except `<username>.github.io`, let's say `project`|
-
-**2**. Commit the changes of the repo first, then run the initialization script:
-
-```console
-$ bash tools/init.sh
-```
-
-> Please note that the *Recent Update* list requires the latest git-log date of posts, thus make sure the changes in `_posts` have been committed before running this command.
-
-it will automatically generates the *Latest Modified Date* and *Categories / Tags* page for the posts and submit a commit. Its output is similar to the following log:
-
-```terminal
-[INFO] Success to update lastmod for 4 post(s).
-[INFO] Succeed! 3 category-pages created.
-[INFO] Succeed! 4 tag-pages created.
-[Automation] Updated the Categories, Tags, Lastmod for post(s).
- 11 files changed, 46 insertions(+), 3 deletions(-)
- ...
-Updated the Categories, Tags, Lastmod for post(s).
-```
-
-
-**3**. Push the changes to `origin/master` then go to GitHub website and enable GitHub Pages service for the repo.
-
-**4**. Check it out:
-
-|Site Type | Site URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
-
-
-### Option 2: Build Locally
-
-For security reasons, GitHub Pages runs on `safe` mode, which means the third-party Jekyll plugins or custom scripts won't work. If you want to use any another plugins that not in the [whitelist](https://pages.github.com/versions/), **you have to generate the site locally rather than on GitHub Pages**.
-
-**1**. Browse to GitHub website, create a brand new repo named: 
-
-|Site Type | Repo's Name|
-|:---|:---|
-|User or Organization | `<username>.github.io`|
-|Project| Any one except `<username>.github.io`, let's say `project`|
-
-and clone it.
-
-**2**. In the root of the source project, build your site by:
-
-```console
-$ bash tools/build.sh -d /path/to/local/project/
-```
-
-The generated static files will be placed in the root of `/path/to/local/project`. Commit and push the changes to the `master` branch on GitHub.
-
-**3**. Go to GitHub website and enable Pages service for the new repository.
-
-**4**. Visit at:
-
-|Site Type | Site URL |
-|:---|:---|
-|User or Organization | `https://<username>.github.io/`|
-|Project| `https://<username>.github.io/project/`|
-
-### Finishing work
-
-No matter which way you choose to deploy the website on GitHub, please enforce the `HTTPS` for it. See official docs: [Securing your GitHub Pages site with HTTPS](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https).
